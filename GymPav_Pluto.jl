@@ -6,12 +6,12 @@ using InteractiveUtils
 
 # ╔═╡ 51d49281-fc4b-41cd-929f-334cfaf92eed
 md"""
-# Irina Viner-Usmanova Rhythmic Gymnastics Centre
+# Irina Viner-Usmanova Rhythmic Gymnastics Pavilion
 """
 
 # ╔═╡ 7655d08a-c183-4017-a225-760a96742a05
 md"""
-The project presented in this notebook is an adaptation of the Irina Viner-Usmanova Rhythmic Gymnastics Centre, originally designed by CPU Pride for Moscow, Russia. Its most prominent feature is the wavy roof-structure, inspired by the movement of a rhythmic gymnastic’s strip. The program elaborated here is a personal interpretation of the original design, developed in a 5 day collaborative sprint. This notebook uses the __Julia__ programming language and the __Khepri__ algorithmic design tool to model the building's geometry.
+The project presented in this notebook is an adaptation of the Irina Viner-Usmanova Rhythmic Gymnastics Pavilion, originally designed by CPU Pride for Moscow, Russia. Its most prominent feature is the wavy roof-structure, inspired by the movement of a rhythmic gymnastic’s strip. The program elaborated here is a personal interpretation of the original design, developed in a 5 day collaborative sprint. This notebook uses the __Julia__ programming language and the __Khepri__ algorithmic design tool to model the building's geometry.
 """
 
 # ╔═╡ c8c6c062-4bbe-455b-a9ef-23925b727d8d
