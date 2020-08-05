@@ -9,4 +9,4 @@ The Jupyter notebook describes the creative process behind the development of th
 __Pluto Summary:__
 The Pluto notebook presents a summary version of the process, containing only the necessary definitions to generate the final version of the model. It does, however, document each one visually to aid the comprehension of the notebook. To run this notebook, install Pluto on your PC and open the [GymPav_Pluto.jl](https://github.com/KhepriNotebook/GymnasticsPavilion_Moscow/blob/master/GymPav_Pluto.jl) file. Use the saved screenshots to confirm that the notebook is yielding the expected results. There is yet no dedicated online viewer for Pluto notebooks. Hence, alternatively, you may just browse through the final version of the notebook saved in the [GymPav_Pluto.pdf](https://github.com/KhepriNotebook/GymnasticsPavilion_Moscow/blob/master/GymPav_Pluto.pdf) file.
 
-![](Renders/blue.png)
+![](Plots/pav1.png)
