@@ -6,12 +6,12 @@ using InteractiveUtils
 
 # ╔═╡ 51d49281-fc4b-41cd-929f-334cfaf92eed
 md"""
-# Irina Viner-Usmanova Rhythmic Gymnastics Pavilion
+# Rhythmic Gymnastics Pavilion
 """
 
 # ╔═╡ 7655d08a-c183-4017-a225-760a96742a05
 md"""
-The project presented in this notebook is an adaptation of the Irina Viner-Usmanova Rhythmic Gymnastics Pavilion, originally designed by CPU Pride for Moscow, Russia. Its most prominent feature is the wavy roof-structure, inspired by the movement of a rhythmic gymnastic’s strip. The program elaborated here is a personal interpretation of the original design, developed in a 5 day collaborative sprint. This notebook uses the __Julia__ programming language and the __Khepri__ algorithmic design tool to model the building's geometry.
+The project presented in this notebook is an adaptation of the Irina Viner-Usmanova Rhythmic Gymnastics Centre, originally designed by CPU Pride for Moscow, Russia. Its most prominent feature is the wavy roof-structure, inspired by the movement of a rhythmic gymnastic’s strip. The program elaborated here is a personal interpretation of the original design, developed in a 5 day collaborative sprint. This notebook uses the __Julia__ programming language and the __Khepri__ algorithmic design tool to model the building's geometry.
 """
 
 # ╔═╡ c8c6c062-4bbe-455b-a9ef-23925b727d8d
@@ -943,8 +943,11 @@ Ground:
 
 # ╔═╡ 1396a123-a339-4a84-9cd3-2afb9cfc1dfe
 md"""
-Random tree definition:
+Trees:
 """
+
+# ╔═╡ 4a367f70-e081-11ea-1edf-3b497421c24c
+
 
 # ╔═╡ 48867045-c40c-4640-9c7e-3c8038d15b0e
 #=
@@ -960,8 +963,29 @@ end
 # ╔═╡ 90fd9fd3-b7bd-490c-a4c4-4ae41393b05f
 md"""
 Expected result:
-![](https://github.com/KhepriNotebook/GymnasticsPavilion_Moscow/blob/master/Plots/trees.png?raw=true)
+![](https://github.com/KhepriNotebook/GymnasticsPavilion_Moscow/blob/master/Plots/pop_trees.png?raw=true)
 """
+
+# ╔═╡ 8e496880-e081-11ea-2583-8d0df3a6694c
+md"""
+Cylindrical tree:
+"""
+
+# ╔═╡ a1937520-e081-11ea-10d6-51278b3e074a
+md"""
+Tree parameters:
+"""
+
+# ╔═╡ d73e0370-e081-11ea-23f5-6f8c57c61af7
+
+
+# ╔═╡ ae2d0350-e081-11ea-1df9-139663772ff7
+md"""
+Expected result:
+"""
+
+# ╔═╡ e0cdad00-e081-11ea-2046-471d596df2b0
+
 
 # ╔═╡ 462ddb6a-916a-44c1-8230-e4c2fda33bd7
 md"""
@@ -1458,60 +1482,16 @@ ground() =
       slab(closed_polygonal_path([xyz(-x,y,z), xyz(x,y,z), xyz(x,-y,z), xyz(-x,-y,z)]), level(-0.05), ground_fam)
     end
 
-# ╔═╡ dbd69447-3f2a-445b-b161-63f84f2b6813
-leaf(p, r, mat) =
-    if current_backend() == unity
-        with(current_material, get_material(mat)) do
-            sphere(p, r)
-        end
-    else
-        sphere(p, r)
-    end
-
-# ╔═╡ ba0a314b-cc95-425e-a5ea-e4e39d511ca8
-branch(pb, rb, pt, rt, mat)=
-    if current_backend() == unity
-        with(current_material, get_material(mat)) do
-            cone_frustum(pb, rb, pt, rt)
-        end
-    else
-        cone_frustum(pb, rb, pt, rt)
-    end
-
-# ╔═╡ 99890b91-f990-4925-98cf-323fe0d8baa6
-tree(p_base, r_base, w_branch, fi, psi, min_f_w, max_f_w, max_fi, min_psi, max_psi) =
-  let psi = psi > pi/2 ? psi - pi/2 : psi < -pi/2 ? psi + pi/2 : psi
-      p_top = p_base + vsph(w_branch, fi, psi)
-      r_top = r_base/2
-      leaf_mat = "Default/Materials/Grass"
-      branch_mat = "materials/wood/ExteriorWood9"
-      branch(p_base, r_base, p_top, r_top, branch_mat)
-      if w_branch < 0.01 || r_top < 0.001
-          leaf(p_top, 0.05, leaf_mat)
-      else
-          tree(p_top, r_top, w_branch*random_range(min_f_w, max_f_w),
-            fi + random(max_fi), psi + random_range(min_psi, max_psi),
-            min_f_w, max_f_w, max_fi, min_psi, max_psi)
-          tree(p_top, r_top, w_branch*random_range(min_f_w, max_f_w),
-            fi - random(max_fi), psi - random_range(min_psi, max_psi),
-            min_f_w, max_f_w, max_fi, min_psi, max_psi)
-      end
-  end
-
-# ╔═╡ 42ee64b5-95b9-421b-913f-a55387ab6861
-random_tree(p)=
-  let r_base = random_range(0.05, 0.3)
-      w_branch = random_range(2, 5)
-      fi = 0
-      psi = 0
-      min_f_w = 0.6 # branch width max factor
-      max_f_w = 0.9 # branch width min factor
-      max_fi = 2pi
-      min_psi = pi/16
-      max_psi = pi/2
-      tree(p, r_base, w_branch, fi, psi, min_f_w, max_f_w, max_fi, min_psi, max_psi)
-
+# ╔═╡ bb828e80-e081-11ea-2c44-27083be0c8db
+begin
+	tree_size = 13
+	segment_length = 0.4
+	min_dist = 0.5
 end
+
+# ╔═╡ 99792d80-e081-11ea-00bb-4d8a2b3a12de
+cyl_attractor(p=u0()) =
+  p + vz(tree_size/1.5) +vcyl(random_range(0, tree_size/5), random_range(0, 2pi), random_range(-tree_size/2, tree_size/2))
 
 # ╔═╡ 44dd45ac-1a64-439b-abb1-6df9dc6e668b
 function GymPav(p)
@@ -1712,12 +1692,16 @@ end
 # ╟─15cfda6e-aa17-43b1-b13a-39fe1626b939
 # ╠═a64f12f4-755b-43a4-b3c1-fc39d0390309
 # ╟─1396a123-a339-4a84-9cd3-2afb9cfc1dfe
-# ╠═dbd69447-3f2a-445b-b161-63f84f2b6813
-# ╠═ba0a314b-cc95-425e-a5ea-e4e39d511ca8
-# ╠═99890b91-f990-4925-98cf-323fe0d8baa6
-# ╠═42ee64b5-95b9-421b-913f-a55387ab6861
+# ╠═4a367f70-e081-11ea-1edf-3b497421c24c
 # ╠═48867045-c40c-4640-9c7e-3c8038d15b0e
-# ╟─90fd9fd3-b7bd-490c-a4c4-4ae41393b05f
+# ╠═90fd9fd3-b7bd-490c-a4c4-4ae41393b05f
+# ╟─8e496880-e081-11ea-2583-8d0df3a6694c
+# ╠═99792d80-e081-11ea-00bb-4d8a2b3a12de
+# ╟─a1937520-e081-11ea-10d6-51278b3e074a
+# ╠═bb828e80-e081-11ea-2c44-27083be0c8db
+# ╠═d73e0370-e081-11ea-23f5-6f8c57c61af7
+# ╟─ae2d0350-e081-11ea-1df9-139663772ff7
+# ╠═e0cdad00-e081-11ea-2046-471d596df2b0
 # ╟─462ddb6a-916a-44c1-8230-e4c2fda33bd7
 # ╟─36bcc19d-5dbc-4ec6-a118-8406018e5cc9
 # ╠═44dd45ac-1a64-439b-abb1-6df9dc6e668b
