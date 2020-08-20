@@ -16,7 +16,7 @@ The project presented in this notebook is an adaptation of the Irina Viner-Usman
 
 # ╔═╡ c8c6c062-4bbe-455b-a9ef-23925b727d8d
 md"
-![](https://github.com/KhepriNotebook/GymnasticsPavilion_Moscow/blob/master/Renders/blue.png?raw=true)
+![](https://github.com/KhepriNotebook/GymnasticsPavilion_Moscow/blob/master/Plots/pav1.png?raw=true)
 "
 
 # ╔═╡ 1ff9afd3-40c3-49e5-be62-d5cf858a29c2
@@ -946,8 +946,18 @@ md"""
 Trees:
 """
 
-# ╔═╡ 4a367f70-e081-11ea-1edf-3b497421c24c
-
+# ╔═╡ 69d823b0-e2fc-11ea-0c1b-3333621d266e
+ #=
+begin
+	backend(unity)
+    include("SpaceColonization.jl")
+    
+    leaf_mat = get_material("Default/Materials/Grass")
+    branch_mat = get_material("materials/wood/ExteriorWood9")
+    
+    draw_tree(new_tree(x(0)))
+end
+=#
 
 # ╔═╡ 48867045-c40c-4640-9c7e-3c8038d15b0e
 #=
@@ -976,8 +986,16 @@ md"""
 Tree parameters:
 """
 
-# ╔═╡ d73e0370-e081-11ea-23f5-6f8c57c61af7
-
+# ╔═╡ 5ad55db0-e2fc-11ea-3a5d-6983f7c47e12
+#=
+begin
+    backend(unity) 
+    delete_all_shapes()
+    ground()
+    map(n -> draw_tree(new_tree(x(n), cyl_attractor)), 0:2:20)
+    render_view("pop_trees_10")
+end
+=#
 
 # ╔═╡ ae2d0350-e081-11ea-1df9-139663772ff7
 md"""
@@ -985,7 +1003,10 @@ Expected result:
 """
 
 # ╔═╡ e0cdad00-e081-11ea-2046-471d596df2b0
-
+md"""
+Expected result:
+![](https://github.com/KhepriNotebook/GymnasticsPavilion_Moscow/blob/master/Plots/pop_trees_10.png?raw=true)
+"""
 
 # ╔═╡ 462ddb6a-916a-44c1-8230-e4c2fda33bd7
 md"""
@@ -1014,26 +1035,33 @@ Saved render views:
 
 # ╔═╡ 5e5e6f44-cf2b-400d-9289-e99ac35bf061
 begin
-    # set_view(xyz(-27.78546905517578,-12.493826866149902,2.73970365524292), xyz(-27.147165298461914,-11.735978126525879,2.874735116958618), 35.0)
-    # render_view("pav1")
 
-    # set_view(xyz(37.13166809082031,96.70274353027344,8.049731254577637), xyz(36.132999420166016,96.71927642822266,8.098581314086914), 35.0)
-    # render_view("pav2")
+#     sun position default
+    
+#     set_view(xyz(-27.78546905517578,-12.493826866149902,2.73970365524292), xyz(-27.147165298461914,-11.735978126525879,2.874735116958618), 35.0)
+#     render_view("pav1")
 
-    # set_view(xyz(86.96595001220703,87.33833312988281,7.179433822631836), xyz(85.97071075439453,87.31035614013672,7.27283239364624), 35.0)
-    # render_view("pav3")
+    
+#     sun position x=124 y=53
+    
+#     set_view(xyz(37.13166809082031,96.70274353027344,8.049731254577637), xyz(36.132999420166016,96.71927642822266,8.098581314086914), 35.0)
+#     render_view("pav2")
+    
+#     set_view(xyz(86.96595001220703,87.33833312988281,7.179433822631836), xyz(85.97071075439453,87.31035614013672,7.27283239364624), 35.0)
+#     render_view("pav3")
 
-    # set_view(xyz(-22.71254539489746,144.94818115234375,7.690451622009277), xyz(-22.17136001586914,144.1073455810547,7.7015814781188965), 35.0)
-    # render_view("pav4")
+#     set_view(xyz(-22.71254539489746,144.94818115234375,7.690451622009277), xyz(-22.17136001586914,144.1073455810547,7.7015814781188965), 35.0)
+#     render_view("pav4")
 
-    # set_view(xyz(-12.342000961303711,103.7385025024414,3.020662307739258), xyz(-11.917301177978516,102.83597564697266,3.0918772220611572), 35.0)
-    # render_view("pav5")
+#     set_view(xyz(-12.342000961303711,103.7385025024414,3.020662307739258), xyz(-11.917301177978516,102.83597564697266,3.0918772220611572), 35.0)
+#     render_view("pav5")
 
-    # set_view(xyz(-2.6654765605926514,130.2740020751953,1.4012055397033691), xyz(-2.5774435997009277,129.29388427734375,1.5790280103683472), 35.0)
-    # render_view("pav6")
+#     set_view(xyz(-2.6654765605926514,130.2740020751953,1.4012055397033691), xyz(-2.5774435997009277,129.29388427734375,1.5790280103683472), 35.0)
+#     render_view("pav6")
 
-    # set_view(xyz(126.3520736694336,-49.96141815185547,27.672582626342773), xyz(125.61244201660156,-49.31004333496094,27.503311157226562), 35.0)
-    # render_view("pav7")
+#     set_view(xyz(126.3520736694336,-49.96141815185547,27.672582626342773), xyz(125.61244201660156,-49.31004333496094,27.503311157226562), 35.0)
+#     render_view("pav7")
+    
 end
 
 # ╔═╡ 8b6f1a25-4734-4be2-915f-c91a455f8e72
@@ -1163,19 +1191,31 @@ ground_fam = slab_family_element(default_slab_family());
 
 # ╔═╡ 7f21df8a-ad8b-405f-9dc0-d3989617bf7b
 begin
-    set_backend_family(default_truss_bar_family(), unity, unity_material_family("Default/Materials/Aluminum"))
-    set_backend_family(free_node_fam, unity, unity_material_family("Default/Materials/Aluminum"))
-    set_backend_family(sup_node_fam, unity, unity_material_family("materials/metal/Copper"))
 
-    set_backend_family(ground_fam, unity, unity_material_family("Default/Materials/Grass")) # -- grass ground
-    # set_backend_family(ground_fam, unity, unity_material_family("Default/Materials/White")) # -- white ground
-    # set_backend_family(ground_fam, unity, unity_material_family("Default/Materials/WhiteUnlit")) # -- white ground no shadows
+# TRUSS FAMILY MATERIALS
 
-    set_backend_family(default_panel_family(), unity, unity_material_family("Default/Materials/GlassBlue"))
-    set_backend_family(frame_fam, unity, unity_material_family("Default/Materials/Steel"))
-    set_backend_family(roof_panel_fam, unity, unity_material_family("Default/Materials/Aluminum"))
-    set_backend_family(yellow_panel_fam, unity, unity_material_family("materials/metal/YellowCopper"))
-    set_backend_family(pav_slab_fam, unity, unity_material_family("Default/Materials/Plaster"))
+set_backend_family(default_truss_bar_family(), unity, unity_material_family("Default/Materials/Aluminum"))
+set_backend_family(free_node_fam, unity, unity_material_family("Default/Materials/Aluminum"))
+set_backend_family(sup_node_fam, unity, unity_material_family("materials/metal/Copper"))
+
+# GLASS WALLS
+
+set_backend_family(default_panel_family(), unity, unity_material_family("Default/Materials/GlassBlue"))
+set_backend_family(frame_fam, unity, unity_material_family("Default/Materials/Steel"))
+
+# ROOF SURFACE PANELS
+
+set_backend_family(roof_panel_fam, unity, unity_material_family("Default/Materials/Aluminum"))
+set_backend_family(yellow_panel_fam, unity, unity_material_family("materials/metal/YellowCopper"))
+set_backend_family(pav_slab_fam, unity, unity_material_family("Default/Materials/Plaster"))
+
+# GROUND MATERIAL
+
+# set_backend_family(ground_fam, unity, unity_material_family("Default/Materials/Concrete")) # -- concrete ground
+set_backend_family(ground_fam, unity, unity_material_family("Default/Materials/Grass")) # -- grass ground
+# set_backend_family(ground_fam, unity, unity_material_family("Default/Materials/White")) # -- white ground
+# set_backend_family(ground_fam, unity, unity_material_family("Default/Materials/WhiteUnlit")) # -- white ground no shadows
+	
 end
 
 # ╔═╡ db127285-e004-4a96-8e05-b9fcafc1099b
@@ -1499,7 +1539,7 @@ function GymPav(p)
 #     roof_truss(p, 30, 70)
     pav_walls(p, n_panels_x, n_panels_y, n_glass_verts)
     floors(p)
-    map(n -> random_tree(p+vxy(-5, n)), 0:2:pav_length) # tree line in the west façade
+    map(n -> draw_tree(new_tree(p+vxy(-5, n), cyl_attractor)), 0:4:pav_length) # tree line in the west façade
 end
 
 # ╔═╡ Cell order:
@@ -1692,16 +1732,16 @@ end
 # ╟─15cfda6e-aa17-43b1-b13a-39fe1626b939
 # ╠═a64f12f4-755b-43a4-b3c1-fc39d0390309
 # ╟─1396a123-a339-4a84-9cd3-2afb9cfc1dfe
-# ╠═4a367f70-e081-11ea-1edf-3b497421c24c
+# ╠═69d823b0-e2fc-11ea-0c1b-3333621d266e
 # ╠═48867045-c40c-4640-9c7e-3c8038d15b0e
-# ╠═90fd9fd3-b7bd-490c-a4c4-4ae41393b05f
+# ╟─90fd9fd3-b7bd-490c-a4c4-4ae41393b05f
 # ╟─8e496880-e081-11ea-2583-8d0df3a6694c
 # ╠═99792d80-e081-11ea-00bb-4d8a2b3a12de
 # ╟─a1937520-e081-11ea-10d6-51278b3e074a
 # ╠═bb828e80-e081-11ea-2c44-27083be0c8db
-# ╠═d73e0370-e081-11ea-23f5-6f8c57c61af7
+# ╠═5ad55db0-e2fc-11ea-3a5d-6983f7c47e12
 # ╟─ae2d0350-e081-11ea-1df9-139663772ff7
-# ╠═e0cdad00-e081-11ea-2046-471d596df2b0
+# ╟─e0cdad00-e081-11ea-2046-471d596df2b0
 # ╟─462ddb6a-916a-44c1-8230-e4c2fda33bd7
 # ╟─36bcc19d-5dbc-4ec6-a118-8406018e5cc9
 # ╠═44dd45ac-1a64-439b-abb1-6df9dc6e668b
